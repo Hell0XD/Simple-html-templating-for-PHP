@@ -2,7 +2,7 @@
 /*
     Name: Simple html templating for PHP
     Author: Max Műller
-    github:
+    github: https://github.com/Hell0XD/Simple-html-templating-for-PHP
 */
 class Engine {
     function __construct(string $path) {
@@ -42,6 +42,10 @@ class Engine {
                     $block = self::get_string_between($file, "<!--{{".$key."}}-->", "<!--{{/".$key."}}-->");
                     // replace blocks atrributes to new ones
                     $newblock = self::replace_string_between($block, $atrribute.'="', '"', $value);
+                    if($newblock == $value){
+                        $newblock = self::replace_string_between($block, $atrribute."='", "'", $value);
+                    }
+                    //var_dump($newblock);
                     // replace old block with new block
                     $file = self::replace_string_between($file, "<!--{{".$key."}}-->", "<!--{{/".$key."}}-->", $newblock);
                 }else{
