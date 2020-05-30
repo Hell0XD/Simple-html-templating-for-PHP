@@ -5,8 +5,9 @@
     github: https://github.com/Hell0XD/Simple-html-templating-for-PHP
 */
 class Engine {
-    function __construct(string $path) {
+    function __construct(string $path, bool $onlyBody) {
         $this->file = file_get_contents($path);
+        if($justBody) $this->file = $this->get_string_between($this->file, '<body>', '</body>');
     }
 
     // generate_html generates html string from given variables and file
